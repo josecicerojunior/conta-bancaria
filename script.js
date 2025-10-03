@@ -15,6 +15,18 @@ class Conta {
     }
   }
 
+  // Início do método de saque
+  sacar(valor) {
+    if (valor > 0 && valor <= this.saldo) {
+      this.saldo -= valor;
+      console.log(`Saque de R$${valor} realizado com sucesso. Saldo
+        atual: R$${this.saldo}`);
+    } else if (valor > this.saldo) {
+      console.log("Saldo insuficiente para saque");
+    } else {
+      console.log("O valor do saque deve ser positivo");
+    }
+  }
   // Criando o método de consulta de saldo da conta
   consultarSaldo() {
     console.log(
@@ -27,14 +39,10 @@ const conta1 = new Conta(101, "José", 100);
 const conta2 = new Conta(102, "Maria", 200);
 const conta3 = new Conta(103, "Antonio", 100);
 
-// console.log(conta1)
-
-conta1.consultarSaldo();
-conta2.consultarSaldo();
-
 conta1.depositar(200);
 conta1.consultarSaldo();
-conta2.depositar(500);
+conta1.sacar(180);
+// verifica objeto conta2
+conta2.depositar(100);
 conta2.consultarSaldo();
-conta3.depositar(350);
-conta3.consultarSaldo();
+conta2.sacar(300);
