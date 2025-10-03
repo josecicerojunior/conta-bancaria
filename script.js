@@ -27,11 +27,19 @@ class Conta {
       console.log("O valor do saque deve ser positivo");
     }
   }
+
   // Criando o método de consulta de saldo da conta
   consultarSaldo() {
     console.log(
       `Conta: ${this.numero} - Titular: ${this.titular} - Saldo: R$ ${this.saldo}`
     );
+  }
+  // método para transferir para outra conta
+  transferir(valor, contaDestino) {
+    if (valor > 0 && valor <= this.saldo) this.saldo -= valor;
+    contaDestino.depositar(valor);
+    console.log(`Transferência de R$ ${valor.toFixed(2)}
+    para a conta ${contaDestino.numero} realizada com sucesso.`);
   }
 }
 
